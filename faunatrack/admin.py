@@ -1,7 +1,8 @@
 from django.contrib import admin
 from .models import Espece, Location, ProfilScientifique, Project, Observation, ProjectMembership
 
-@admin.register(Espece)
+
+# https://unfoldadmin.com/docs/integrations/django-celery-beat/@admin.register(Espece)
 class EspeceAdmin(admin.ModelAdmin):
     list_display = ['id', 'nom', 'created_at', 'updated_at']
 
