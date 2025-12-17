@@ -16,13 +16,13 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from debug_toolbar.toolbar import debug_toolbar_urls
 
-from faunatrack.views import hello_world, hello_world2
+from faunatrack.views import hello_world
 
 # Pas de slash en début d'urls !
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', hello_world, name="hello_world" ),
-    path('2/', hello_world2, name="hello_world2" ),
 
-]
+] + debug_toolbar_urls()

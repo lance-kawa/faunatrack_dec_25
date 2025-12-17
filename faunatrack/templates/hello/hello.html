@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+
+{% block body %}
+    <h1>Hello {{user}}</h1>
+    {% comment %} copie le fichier {% endcomment %}
+    {% include "hello/hello_include.html" %} 
+    
+    {% for espece in especes %}
+        <p>{{ espece }}</p>
+    {% endfor %}
+{% endblock %}
