@@ -55,8 +55,8 @@ ROOT_URLCONF = 'pythagore.urls'
 
 TEMPLATES = [
     {
-        'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'BACKEND': 'django.template.backends.django.DjangoTemplates', # "django_mako.MakoEngine",
+        'DIRS': [ BASE_DIR / "pythagore" / "templates", BASE_DIR / "faunatrack" / "templates"],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

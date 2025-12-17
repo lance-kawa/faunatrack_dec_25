@@ -3,6 +3,9 @@ from .models import Espece, Location, ProfilScientifique, Project, Observation, 
 
 
 # https://unfoldadmin.com/docs/integrations/django-celery-beat/@admin.register(Espece)
+# Utilisr les modèles 'Inlines' pour améliorer l'UX/UI
+
+@admin.register(Espece)
 class EspeceAdmin(admin.ModelAdmin):
     list_display = ['id', 'nom', 'created_at', 'updated_at']
 

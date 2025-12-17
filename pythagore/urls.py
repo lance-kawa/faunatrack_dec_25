@@ -17,9 +17,12 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
-from faunatrack.views import hello_world
+from faunatrack.views import hello_world, hello_world2
 
+# Pas de slash en début d'urls !
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', hello_world, name="hello_world" )
+    path('', hello_world, name="hello_world" ),
+    path('2/', hello_world2, name="hello_world2" ),
+
 ]

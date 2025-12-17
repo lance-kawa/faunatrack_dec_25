@@ -1,4 +1,4 @@
-# from django.shortcuts import render
+from django.shortcuts import render
 from django.http import HttpResponse
 
 
@@ -8,4 +8,13 @@ from django.http import HttpResponse
 def hello_world(request):
     user = request.user
 
-    return HttpResponse(f"Bonjour {user}")
+    return render(request, template_name="hello.html", context={
+        "user": user
+    })
+    
+def hello_world2(request):
+    user = request.user
+
+    return render(request, template_name="hello2.html", context={
+        "user": user
+    })

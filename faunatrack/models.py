@@ -6,6 +6,11 @@ from django.db import models
 from django.conf import settings
 from django.utils.translation import gettext_lazy as _
 from django.utils import timezone
+
+# Les modèles Abstraits sont très puissants pour éviter de dupliquer du code
+# On oublie pas on_delete sur les ForeignKey
+# Les méthodes __str__ améliorent l'UX/UI de votre application
+# from django.utils.translation import gettext_lazy as _ est votre compagnong idéeal pour les translations
 class BaseModel(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     created_at = models.DateTimeField(auto_now_add=True)
