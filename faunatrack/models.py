@@ -1,5 +1,4 @@
 
-from typing import Any
 
 
 import uuid
@@ -22,8 +21,8 @@ class ProjectMembership(BaseModel):
         CONTRIBUTOR = ("contrib", "Contributeur")
         ADMIN = ("admin", "Administrateur")
         
-    project = models.ForeignKey("faunatrack.Project")
-    profil_scientifique = models.ForeignKey("faunatrack.ProfilScientifique")
+    project = models.ForeignKey("faunatrack.Project", on_delete=models.CASCADE)
+    profil_scientifique = models.ForeignKey("faunatrack.ProfilScientifique", on_delete=models.CASCADE)
     role = models.CharField(max_length=255, choices=Role.choices, default=Role.VIEWER)
     
 class ProfilScientifique(BaseModel):
