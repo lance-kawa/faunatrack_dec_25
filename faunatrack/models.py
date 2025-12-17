@@ -48,7 +48,7 @@ class Espece(BaseModel):
     
     
 class Observation(BaseModel):
-    espece = models.ManyToManyField(Espece)
+    espece = models.ManyToManyField(Espece, related_name="observations")
     project = models.ForeignKey("faunatrack.Project", on_delete=models.PROTECT, related_name="observations")
     location = models.ForeignKey("faunatrack.Location", on_delete=models.PROTECT, related_name="observations")
     date_observation = models.DateTimeField(verbose_name=_("Date d'observation"), default=timezone.now)

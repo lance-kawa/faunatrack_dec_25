@@ -5,7 +5,7 @@
     {% comment %} copie le fichier {% endcomment %}
     {% include "hello/hello_include.html" %} 
     
-    {% for espece in especes %}
-        <p>{{ espece }}</p>
+    {% for obj in liste_especes %}
+        <p>{{ obj.nom }} qty: {{ obj.quantite }}</p>
     {% endfor %}
 {% endblock %}
