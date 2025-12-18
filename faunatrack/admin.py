@@ -28,7 +28,7 @@ class ProjectAdmin(admin.ModelAdmin):
 
 @admin.register(Observation)
 class ObservationAdmin(admin.ModelAdmin):
-    list_display = ['id', 'project', 'location', 'date_observation', 'created_at', 'updated_at']
+    list_display = ['espece','project', 'location', 'date_observation', 'created_at', 'updated_at']
     list_filter = ['project', 'location', 'date_observation']
 
 

@@ -82,3 +82,8 @@ class ObservationCreate(AuthenticationMixin, CreateView):
     success_url = reverse_lazy("observations_list")
     
     
+class ObservationUpdate(AuthenticationMixin, UpdateView):
+    model = Observation
+    form_class = ObservationForm
+    template_name = "observation/update.html"
+    success_url = reverse_lazy("observations_list")

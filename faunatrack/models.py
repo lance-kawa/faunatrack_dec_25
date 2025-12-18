@@ -21,8 +21,6 @@ class BaseModel(models.Model):
     class Meta:
         abstract = True
         ordering = ['-created_at']
-        verbose_name = _("Base Model")
-        verbose_name_plural = _("Base Models")
         
         
 class ProjectMembership(BaseModel):
@@ -74,7 +72,7 @@ class Observation(BaseModel):
     objects = models.Manager()
     mon_manager = ObservationManager()
 
-    espece = models.ManyToManyField(Espece, related_name="observations")
+    espece = models.ForeignKey(Espece, on_delete=models.PROTECT, related_name="observations")
     project = models.ForeignKey("faunatrack.Project", on_delete=models.PROTECT, related_name="observations")
     location = models.ForeignKey("faunatrack.Location", on_delete=models.PROTECT, related_name="observations")
     date_observation = models.DateTimeField(verbose_name=_("Date d'observation"), default=timezone.now)
@@ -95,10 +93,6 @@ class Observation(BaseModel):
             self.notes = ""    
         super().save(*args, **kwargs)
                     
-    class Meta:
-        indexes = [
-            models.Index(fields=['espece', 'location']),
-        ]
     
 class ObservationPhotos(BaseModel):
     photo = models.ImageField(upload_to="photos/", null=True)
