@@ -15,7 +15,7 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import include, path
 from debug_toolbar.toolbar import debug_toolbar_urls
 
 from faunatrack.views import ObservationCreate, ObservationList, hello_world
@@ -23,8 +23,9 @@ from faunatrack.views import ObservationCreate, ObservationList, hello_world
 # Pas de slash en début d'urls !
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('secure/', hello_world, name="hello_world" ),
+    path('', hello_world, name="home" ),
     path("observations/", ObservationList.as_view(), name="observations_list"),
-    path("observations/create/", ObservationCreate.as_view(), name="observations_add")
+    path("observations/create/", ObservationCreate.as_view(), name="observations_add"),
+    path("auth/", include("django.contrib.auth.urls")),
 
 ] + debug_toolbar_urls()

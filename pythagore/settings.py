@@ -38,7 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django_extensions',
-     "debug_toolbar",
+    'debug_toolbar',
     'faunatrack'
 ]
 
@@ -132,5 +132,6 @@ LOCALE_PATHS = [
 
 STATIC_URL = 'static/'
 
-
-LOGGER = []
+LOGIN_URL = "/auth/login/"
+LOGIN_REDIRECT_URL = "/"
+LOGOUT_REDIRECT_URL = "/"

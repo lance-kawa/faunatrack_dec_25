@@ -1,9 +1,9 @@
 {% extends "base.html" %}
 
-{% block body %}
+{% block content %}
     <h1>Hello {{user}}</h1>
     {% comment %} copie le fichier {% endcomment %}
-    {% include "hello/hello_include.html" %} 
+    {% comment %} {% include "hello/hello_include.html" %}  {% endcomment %}
     
     {% for obj in liste_especes %}
         <p>{{ obj.nom }} qty: {{ obj.quantite }}</p>

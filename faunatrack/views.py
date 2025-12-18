@@ -15,9 +15,7 @@ logger = logging.getLogger(__name__)
 
 # Create your views here.
 def hello_world(request):
-    
-    if not request.user.is_authenticated:
-        return redirect("/")
+
 
     # Nombre total de chaque espèce observée exemple rossignol x3, merle x5
     especes = Espece.objects.all()
@@ -52,7 +50,7 @@ def hello_world(request):
     
     
     
-class AuthenticationMixin(LoginRequiredMixin, PermissionRequiredMixin, UserPassesTestMixin):
+class AuthenticationMixin(LoginRequiredMixin, UserPassesTestMixin):
     
     def test_func(self):
         try:
@@ -64,7 +62,7 @@ class AuthenticationMixin(LoginRequiredMixin, PermissionRequiredMixin, UserPasse
 class ObservationList(AuthenticationMixin, ListView):
     # queryset = Observation.objects.all()
     template_name = "observation/list.html"
-    permission_required = "faunatrack.view_observation"
+    # permission_required = "faunatrack.view_observation"
 
     
     def get_queryset(self):
