@@ -26,8 +26,8 @@ class ObservationForm(FaunatrackForm):
     quantite =  forms.IntegerField(
         label="Quantité",
         help_text="Nombre d'indidivus observés",
-        min_value=2,
-        max_value=3
+        min_value=1,
+        max_value=1000
     )
     
     def clean_date_observation(self):

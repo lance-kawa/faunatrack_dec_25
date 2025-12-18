@@ -5,7 +5,7 @@
 <a href="{% url 'observations_add' %}">Créer une observation</a>
  {% for obj in object_list %}
     <p> {{ obj }} {{ obj.quantite }}</p>
-    <a href="{% url 'observations_update' obj.id %}">Voir</a>
+    <a href="{% url 'observations_update' pk=obj.id %}">Voir</a>
 {% endfor %}
 
 {% endblock content %}
