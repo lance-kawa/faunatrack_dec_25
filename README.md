@@ -27,3 +27,10 @@
     #     lion = Espece.objects.get(nom="sdfsdf")
     # except Espece.DoesNotExist:
     #     pass
+
+
+### TD FORMULAIRES
+
+- Ajouter un boutton a l'acceuil pour accéder aux observations
+- Cliquer sur une observation => Editer dans un formulaire mon observation
+- (Bonus) Seul les contributeurs et administrateurs du projet peuvent éditer les observations

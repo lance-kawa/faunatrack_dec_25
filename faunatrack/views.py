@@ -72,7 +72,7 @@ class ObservationList(AuthenticationMixin, ListView):
 
     
     def get_queryset(self):
-        return Observation.objects.all().values("espece__nom").annotate(nb_obs=Count("id"))
+        return Observation.objects.all()
         
     
 class ObservationCreate(AuthenticationMixin, CreateView):

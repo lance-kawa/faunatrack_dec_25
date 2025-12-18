@@ -20,6 +20,10 @@ class BaseModel(models.Model):
     
     class Meta:
         abstract = True
+        ordering = ['-created_at']
+        verbose_name = _("Base Model")
+        verbose_name_plural = _("Base Models")
+        
         
 class ProjectMembership(BaseModel):
     
@@ -91,6 +95,10 @@ class Observation(BaseModel):
             self.notes = ""    
         super().save(*args, **kwargs)
                     
+    class Meta:
+        indexes = [
+            models.Index(fields=['espece', 'location']),
+        ]
     
 class ObservationPhotos(BaseModel):
     photo = models.ImageField(upload_to="photos/", null=True)
