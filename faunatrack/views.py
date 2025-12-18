@@ -1,4 +1,5 @@
 
+from django.contrib.auth.decorators import login_required
 from django.db.models import Q, Count, Sum
 from django.shortcuts import  redirect, render
 import logging
@@ -8,14 +9,19 @@ from faunatrack.forms import ObservationForm
 from faunatrack.models import Espece, Observation, ProfilScientifique, Project
 from django.contrib.auth.mixins import PermissionRequiredMixin, UserPassesTestMixin, LoginRequiredMixin
 from django.views.generic import ListView, CreateView, UpdateView, DeleteView, DetailView
-
+from django.core.mail import send_mail
 logger = logging.getLogger(__name__)
 
 
 
-# Create your views here.
+
+@login_required # Create your views here.
 def hello_world(request):
 
+
+
+    send_mail("Mon super mail", message="C'est un message text", from_email="Bastien@monserver.com",
+              recipient_list=["bonjour@pythagore.com"], html_message="emails/mon_email_de_bienvenue.html")
 
     # Nombre total de chaque espèce observée exemple rossignol x3, merle x5
     especes = Espece.objects.all()

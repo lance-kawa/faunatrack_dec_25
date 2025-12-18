@@ -67,6 +67,7 @@ class ObservationManager(models.Manager):
     
 class Observation(BaseModel):
     
+    objects = models.Manager()
     mon_manager = ObservationManager()
 
     espece = models.ManyToManyField(Espece, related_name="observations")
