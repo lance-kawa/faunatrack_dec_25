@@ -1,4 +1,5 @@
 from django import forms
+from django.utils import timezone
 
 from faunatrack.models import Observation
 
@@ -21,3 +22,16 @@ class ObservationForm(FaunatrackForm):
                 }
             )
         }
+        
+    quantite =  forms.IntegerField(
+        label="Quantité",
+        help_text="Nombre d'indidivus observés",
+        min_value=2,
+        max_value=3
+    )
+    
+    def clean_date_observation(self):
+        date = self.cleaned_data.get("date_observation", None)
+        if not date or date > timezone.now():
+            raise forms.ValidationError("La date observation ne peut pas être dans le futur ! ")
+        return date
