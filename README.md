@@ -18,3 +18,12 @@
 ### Translations 
 `python manage.py makemessages -l fr` => Pour générer le fichier de traduction
 `python manage.py compilemessages` => Pour compiler mes traductions une fois complétées
+
+### ORM dans les routes
+
+    # lion = get_object_or_404(Espece, nom="sdfsdf") +> Pour éviter les erreurs 500
+    
+    # try: 
+    #     lion = Espece.objects.get(nom="sdfsdf")
+    # except Espece.DoesNotExist:
+    #     pass

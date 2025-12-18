@@ -132,3 +132,5 @@ LOCALE_PATHS = [
 
 STATIC_URL = 'static/'
 
+
+LOGGER = []

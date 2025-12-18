@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+
+{% block body %}
+<p>Bonjour</p>
+<a href="{% url 'observations_add' %}">Créer une observation</a>
+ {% for obj in object_list %}
+    <p> {{ obj }} {{ obj.quantite }}</p>
+{% endfor %}
+
+{% endblock body %}

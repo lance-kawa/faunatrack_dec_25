@@ -27,7 +27,7 @@ class ProjectMembership(BaseModel):
         CONTRIBUTOR = ("contrib", "Contributeur")
         ADMIN = ("admin", "Administrateur")
         
-    project = models.ForeignKey("faunatrack.Project", on_delete=models.CASCADE)
+    project = models.ForeignKey("faunatrack.Project", on_delete=models.CASCADE, related_name="memberships")
     profil_scientifique = models.ForeignKey("faunatrack.ProfilScientifique", on_delete=models.CASCADE, related_name="memberships")
     role = models.CharField(max_length=255, choices=Role.choices, default=Role.VIEWER)
     
@@ -35,7 +35,7 @@ class ProjectMembership(BaseModel):
         return f"{self.profil_scientifique.user.username} - {self.project.titre} - {self.role}"
     
 class ProfilScientifique(BaseModel):
-    user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name="profil_scientifique")
     
     def __str__(self):
         return self.user.username

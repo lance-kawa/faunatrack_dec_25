@@ -18,11 +18,13 @@ from django.contrib import admin
 from django.urls import path
 from debug_toolbar.toolbar import debug_toolbar_urls
 
-from faunatrack.views import hello_world
+from faunatrack.views import ObservationCreate, ObservationList, hello_world
 
 # Pas de slash en début d'urls !
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', hello_world, name="hello_world" ),
+    path('secure/', hello_world, name="hello_world" ),
+    path("observations/", ObservationList.as_view(), name="observations_list"),
+    path("observations/create/", ObservationCreate.as_view(), name="observations_add")
 
 ] + debug_toolbar_urls()

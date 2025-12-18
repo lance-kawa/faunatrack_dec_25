@@ -8,4 +8,10 @@
     {% for obj in liste_especes %}
         <p>{{ obj.nom }} qty: {{ obj.quantite }}</p>
     {% endfor %}
+
+    {% for obj in espece_nb_observations %}
+        <p>{{ obj.espece__nom }} nombre d'observations: {{ obj.nb_obs }}</p>
+    {% endfor %}
+
+
 {% endblock %}

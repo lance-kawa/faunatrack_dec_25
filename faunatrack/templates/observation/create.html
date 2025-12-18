@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+
+{% block body %}
+<a href="{% url 'observations_list' %}">Retour à la liste</a>
+<form method="post">
+    {% csrf_token %}
+    {{ form }}
+    <button action="submit">Envoyer</button>
+</form>
+
+{% endblock body %}
