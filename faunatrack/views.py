@@ -81,3 +81,4 @@ class ObservationCreate(AuthenticationMixin, CreateView):
     template_name = "observation/create.html"
     success_url = reverse_lazy("observations_list")
     
+    
