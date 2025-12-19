@@ -6,6 +6,7 @@ from django.core.validators import MinValueValidator
 from django.db import models
 from django.conf import settings
 from django.forms import ValidationError
+from django.utils.text import slugify
 from django.utils.translation import gettext_lazy as _
 from django.utils import timezone
 
@@ -114,7 +115,13 @@ class Location(BaseModel):
 class Project(BaseModel):
     titre = models.CharField(max_length=255)
     description = models.TextField()
+    slug = models.SlugField(blank=True)
  
     def __str__(self):
         return self.titre
     
+
+    def save(self, *args, **kwargs):
+        if not self.slug:
+            self.slug = slugify(self.titre)
+        super().save(*args, **kwargs)

@@ -39,7 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django_extensions',
     'debug_toolbar',
-    'faunatrack'
+    'faunatrack',
+    'rest_framework',
 ]
 
 MIDDLEWARE = [

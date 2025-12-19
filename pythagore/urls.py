@@ -17,9 +17,14 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import include, path
 from debug_toolbar.toolbar import debug_toolbar_urls
-
+from rest_framework.routers import DefaultRouter
+from faunatrack.api import EspeceViewset, HelloWorldView, ObservationViewset, ProjectViewset
 from faunatrack.views import ObservationCreate, ObservationList, ObservationUpdate, hello_world
 
+router = DefaultRouter()
+router.register(r'observations', ObservationViewset, basename='observation')
+router.register(r'especes', EspeceViewset, basename='espece')
+router.register(r'projects', ProjectViewset, basename='project')
 # Pas de slash en début d'urls !
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -28,5 +33,7 @@ urlpatterns = [
     path("observations/create/", ObservationCreate.as_view(), name="observations_add"),
     path("observations/<uuid:pk>/update/", ObservationUpdate.as_view(), name="observations_update"),
     path("auth/", include("django.contrib.auth.urls")),
-
+    # path('api/', include('rest_framework.urls')),
+    path('api/hello-world/', HelloWorldView.as_view(), name="hello_world"),
+    path('api/', include(router.urls)),
 ] + debug_toolbar_urls()
