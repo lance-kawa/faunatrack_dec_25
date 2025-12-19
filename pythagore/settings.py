@@ -143,7 +143,8 @@ EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
-        'rest_framework_simplejwt.authentication.JWTAuthentication',
+        'rest_framework_simplejwt.authentication.JWTStatelessUserAuthentication',
+        # 'rest_framework_simplejwt.authentication.JWTAuthentication',
     ),
     'DEFAULT_PERMISSION_CLASSES': (
         'rest_framework.permissions.IsAuthenticated',
@@ -151,6 +152,6 @@ REST_FRAMEWORK = {
 }
 
 SIMPLE_JWT = {  
-    "ACCESS_TOKEN_LIFETIME":  timezone.timedelta(seconds=30),
+    "ACCESS_TOKEN_LIFETIME":  timezone.timedelta(minutes=3),
     "REFRESH_TOKEN_LIFETIME": timezone.timedelta(days=1),
 }
